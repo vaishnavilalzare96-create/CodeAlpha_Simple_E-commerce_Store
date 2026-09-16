@@ -1,0 +1,111 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopEase | Modern Online Shopping</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<header>
+
+    <a href="/" class="logo">
+        Shop<span>Ease</span>
+    </a>
+
+    <form action="/products/" method="get">
+
+        <input
+            type="text"
+            name="q"
+            placeholder="Search for products, brands and more..."
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+    <nav>
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/products/">
+            Shop
+        </a>
+
+        <a href="/wishlist/">
+            ♡ Wishlist
+        </a>
+
+        <a href="/cart/">
+            🛒 Cart
+        </a>
+
+        {% if user.is_authenticated %}
+
+            <a href="/orders/">
+                Orders
+            </a>
+
+            <a href="/logout/">
+                Logout
+            </a>
+
+        {% else %}
+
+            <a href="/login/">
+                Login
+            </a>
+
+            <a href="/register/">
+                Sign Up
+            </a>
+
+        {% endif %}
+
+    </nav>
+
+</header>
+
+
+{% for message in messages %}
+
+<div class="toast">
+    {{ message }}
+</div>
+
+{% endfor %}
+
+
+{% block content %}
+
+{% endblock %}
+
+
+<footer>
+
+    <strong>ShopEase</strong>
+
+    <br>
+
+    Modern E-Commerce Store
+
+    <br><br>
+
+    © 2026 ShopEase • CodeAlpha Full Stack Development Internship
+
+</footer>
+
+</body>
+</html>
